@@ -41,8 +41,8 @@ modules:
           - name: auth.rhel.install
           - name: common.java
 artifacts:
-    - path: sasl-plugin-0.21.2.redhat-00007.jar
-      md5: 54ffc782b7fcc651d6c5e67e14f92f7e
+    - path: sasl-plugin-0.22.0.redhat-00002.jar
+      md5: 4059d87849df890f31c311491e4d522a
       name: sasl-plugin.jar
     
 run:
