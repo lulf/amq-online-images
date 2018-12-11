@@ -20,4 +20,10 @@ cp /etc/pki/java/cacerts ${TRUSTSTORE_PATH}
 chmod 644 ${TRUSTSTORE_PATH}
 echo "Copied system trust store. Importing OpenShift CA"
 keytool -import -noprompt -file ${OPENSHIFT_CA} -alias firstCA -deststorepass changeit -keystore $TRUSTSTORE_PATH
+for cert in `find ${KEYCLOAK_PLUGIN_DIR}/certs`
+do
+    fname=`basename $cert`
+    fnametrim==${fname%.pem}
+    keytool -import -noprompt -file $cert -alias ${fnametrim} -deststorepass changeit -keystore $TRUSTSTORE_PATH
+done
 echo "Truststore ${TRUSTSTORE_PATH} created"
